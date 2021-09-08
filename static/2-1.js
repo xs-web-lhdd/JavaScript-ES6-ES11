@@ -74,17 +74,183 @@
 // }
 
 // 通过ownKeys筛选出下划线_开头的属性
-let userInfo = {
-  userName: 'liang',
-  age: 18,
-  _password: '******'
+// let userInfo = {
+//   userName: 'liang',
+//   age: 18,
+//   _password: '******'
+// }
+// userInfo = new Proxy(userInfo, {
+//   ownKeys(target) {
+//     return Object.keys(target).filter(key => !key.startsWith('_'))
+//   }
+// })
+
+// for (let key in userInfo) {
+//   console.log(key);
+// }
+
+
+// get 拦截：
+// let user = {
+//   name: 'liang',
+//   age: 24,
+//   _password: '***'
+// }
+// user = new Proxy(user, {
+//   get(target, prop) {
+//     if (prop.startsWith('_')) {
+//       throw Error('不可访问')
+//     } else {
+//       return target[prop]
+//     }
+//   }
+// })
+// console.log(user.name);
+// console.log(user._password);
+
+// set拦截：
+// let user = {
+//   name: 'liang',
+//   age: 24,
+//   _password: '***'
+// }
+// user = new Proxy(user, {
+//   get(target, prop) {
+//     if (prop.startsWith('_')) {
+//       throw Error('不可访问')
+//     } else {
+//       return target[prop]
+//     }
+//   },
+//   set(target, prop, val) {
+//     if(prop.startsWith('_')) {
+//       throw Error('不可访问')
+//     } else {
+//       target[prop] = val
+//       return true
+//     }
+//   }
+// })
+// user.age = 18
+// console.log(user.age);
+// user._password = '123'
+// console.log(user._password);
+
+// 删除拦截：
+// let user = {
+//   name: 'liang',
+//   age: 24,
+//   _password: '***'
+// }
+// user = new Proxy(user, {
+//   get(target, prop) {
+//     if (prop.startsWith('_')) {
+//       throw Error('不可访问')
+//     } else {
+//       return target[prop]
+//     }
+//   },
+//   set(target, prop, val) {
+//     if (prop.startsWith('_')) {
+//       throw Error('不可访问')
+//     } else {
+//       target[prop] = val
+//       return true
+//     }
+//   },
+//   deleteProperty(target, prop) {
+//     if (prop.startsWith('_')) {
+//       throw Error('不可删除')
+//     } else {
+//       delete target[prop]
+//       return true
+//     }
+//   }
+// })
+// try {
+//   delete user.age
+// } catch (error) {
+//   console.log(error.message);
+// }
+// console.log(user.age);
+
+// try {
+//   delete user._password
+// } catch (error) {
+//   console.log(error.message);
+// }
+// console.log(user._password);
+
+
+// ownKeys
+// let user = {
+//   name: 'liang',
+//   age: 24,
+//   _password: '***'
+// }
+// user = new Proxy(user, {
+//   get(target, prop) {
+//     if (prop.startsWith('_')) {
+//       throw Error('不可访问')
+//     } else {
+//       return target[prop]
+//     }
+//   },
+//   set(target, prop, val) {
+//     if (prop.startsWith('_')) {
+//       throw Error('不可访问')
+//     } else {
+//       target[prop] = val
+//       return true
+//     }
+//   },
+//   deleteProperty(target, prop) {
+//     if (prop.startsWith('_')) {
+//       throw Error('不可删除')
+//     } else {
+//       delete target[prop]
+//       return true
+//     }
+//   },
+//   ownKeys(target) {
+//     return Object.keys(target).filter(key => !key.startsWith('_'))
+//   }
+// })
+// for (let key in user) {
+//   console.log(key);
+// }
+
+
+
+// apply 拦截 当函数调用或call、apply拦截时执行
+// let sum = (...args) => {
+//   let num = 0
+//   args.forEach(item => {
+//     num += item
+//   })
+//   return num
+// }
+// sum = new Proxy(sum, {
+//   apply(target, ctx, args) {
+//     return target(...args) * 2
+//   }
+// })
+
+// console.log(sum(1, 2));
+// console.log(sum.call(null, 1, 2, 3));
+// console.log(sum.apply(null, [1, 2, 3]));
+
+
+// construct  new
+let User = class {
+  constructor(name) {
+    this.name = name
+  }
 }
-userInfo = new Proxy(userInfo, {
-  ownKeys(target) {
-    return Object.keys(target).filter(key => !key.startsWith('_'))
+User = new Proxy(User, {
+  construct(target, args, newTarget) {
+    return new target(...args)
   }
 })
 
-for (let key in userInfo) {
-  console.log(key);
-}
+console.log(new User('imooc'));
