@@ -3,4 +3,5 @@
 // import '../static/2-1'
 // import '../static/reflect'
 // import '../static/async_before'
-import '../static/Promise'
+// import '../static/Promise'
+import '../static/ajax_promise'
