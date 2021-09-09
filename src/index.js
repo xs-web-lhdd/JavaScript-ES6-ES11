@@ -4,4 +4,5 @@
 // import '../static/reflect'
 // import '../static/async_before'
 // import '../static/Promise'
-import '../static/ajax_promise'
+// import '../static/ajax_promise_success'
+import '../static/ajax_promise_all'
