@@ -6,4 +6,5 @@
 // import '../static/Promise'
 // import '../static/ajax_promise_success'
 // import '../static/ajax_promise_all'
-import '../static/static_promise'
+// import '../static/static_promise'
+import '../static/generator'
