@@ -8,4 +8,5 @@
 // import '../static/ajax_promise_all'
 // import '../static/static_promise'
 // import '../static/generator'
-import '../static/Iterator'
+// import '../static/Iterator'
+import '../static/3-es7-array'
