@@ -5,4 +5,5 @@
 // import '../static/async_before'
 // import '../static/Promise'
 // import '../static/ajax_promise_success'
-import '../static/ajax_promise_all'
+// import '../static/ajax_promise_all'
+import '../static/static_promise'

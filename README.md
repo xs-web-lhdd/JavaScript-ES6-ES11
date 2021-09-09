@@ -25,3 +25,7 @@ npm run build
 
 ![](https://i.loli.net/2021/09/08/iwRcp3DLg2MB4Tm.png)
 
+##### Promise：
+
+![](https://i.loli.net/2021/09/09/GqIsl3MzEDL7ygA.png)
+
