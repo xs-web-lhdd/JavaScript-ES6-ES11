@@ -12,4 +12,5 @@
 // import '../static/3-es7-array'
 // import '../static/2-pow'
 // import '../static/es8-async'
-import '../static/es8-Object'
+// import '../static/es8-Object'
+import '../static/es8-Object_'
