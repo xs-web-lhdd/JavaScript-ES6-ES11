@@ -15,4 +15,5 @@
 // import '../static/es8-Object'
 // import '../static/es8-Object_'
 // import '../static/es8-string-many'
-import '../static/es9-1'
+// import '../static/es9-1'
+import '../static/es9-2'
